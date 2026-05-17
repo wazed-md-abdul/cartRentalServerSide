@@ -12,7 +12,18 @@
   "type": "commonjs",
   "dependencies": {
     "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
     "express": "^5.2.1",
+    "jose-cjs": "^6.2.3",
     "mongodb": "^7.2.0"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wazed-md-abdul/cartRentalServerSide.git"
+  },
+  "bugs": {
+    "url": "https://github.com/wazed-md-abdul/cartRentalServerSide/issues"
+  },
+  "homepage": "https://github.com/wazed-md-abdul/cartRentalServerSide#readme"
 }
