@@ -67,6 +67,18 @@ async function run() {
       const result = await carsCollection.deleteOne(query);
       res.send(result);
     })
+    app.get('/featured-cars', async (req, res) => {
+      const result = await carsCollection.find().limit(3).toArray();
+      res.send(result); 
+    })
+    app.patch('/cars/:id', async (req, res) => {
+      const id = req.params.id;
+      const result = await carsCollection.updateOne(
+          { _id: new ObjectId(id) },
+          { $inc: { bookedUserCount: 1 } }
+      );
+      res.send(result);
+    })
     app.get('/cars', async (req, res) => {
       const { search } = req.query;
       console.log(search);
