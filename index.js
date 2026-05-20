@@ -24,7 +24,7 @@ async function run() {
 
 
 
-    await client.connect();
+
 
     const db = client.db("DriveLoop");
     const carsCollection = db.collection("cars");
@@ -115,8 +115,6 @@ async function run() {
       res.send(result);
     })
 
-    await client.db("admin").command({ ping: 1 });
-    console.log("Pinged your deployment. You successfully connected to MongoDB!");
   } finally {
 
   }
