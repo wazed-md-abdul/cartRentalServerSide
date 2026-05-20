@@ -79,6 +79,16 @@ async function run() {
       );
       res.send(result);
     })
+    app.patch('/update/:id', async (req, res) => {
+      const id = req.params.id;
+      const body = req.body;
+      
+      const result = await carsCollection.updateOne(
+          { _id: new ObjectId(id) },
+          { $set: body }
+      );
+      res.send(result);
+    })
     app.get('/cars', async (req, res) => {
       const { search } = req.query;
       console.log(search);
