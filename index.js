@@ -17,6 +17,31 @@ const client = new MongoClient(uri, {
 });
 
 const JWKS = createRemoteJWKSet(new URL(`${process.env.BASE_URL}/api/auth/jwks`));
+
+const verifyToken = async (req,res,next) => {
+  const authHeader = req?.headers.authorization;
+  if(!authHeader){
+    return res.status(401).send({message: 'unauthorized access'});
+  }
+  console.log(authHeader);
+  const token = authHeader?.split(' ')[1];
+  if(!token){
+    return res.status(401).send({message: 'unauthorized access'});
+  }
+ try {
+   const {payload} = await jwtVerify(token, JWKS);
+   console.log(payload);
+   next();
+   
+ } catch (error) {
+  return res.status(403).json({message: 'forbidden access'});
+  
+ }
+  
+
+}
+
+
 async function run() {
   try {
 
@@ -37,7 +62,7 @@ async function run() {
       const result = await bookingCollection.insertOne(car);
       res.send(result);
     })
-    app.get('/booking/:id', async (req, res) => {
+    app.get('/booking/:id', verifyToken, async (req, res) => {
       const userId = req.params.id;
       const query = { userId: userId };
       const result = await bookingCollection.find(query).toArray();
