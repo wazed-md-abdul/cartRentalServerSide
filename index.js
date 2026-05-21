@@ -25,10 +25,6 @@ const verifyToken = async (req,res,next) => {
   }
   console.log(authHeader);
   const token = authHeader?.split(' ')[1];
-  console.log(token);
-  console.log(typeof token);
-  
-  
   if(!token){
     return res.status(401).send({message: 'unauthorized access'});
   }
