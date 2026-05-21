@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 360" role="img" aria-labelledby="title desc">
+  <title id="title">Car Rental Server Side Banner</title>
+  <desc id="desc">Animated banner with a moving car, orbiting motion, and bold backend branding.</desc>
+
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#0f0f10"/>
+      <stop offset="100%" stop-color="#1b1b1f"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0%" stop-color="#ffd166"/>
+      <stop offset="100%" stop-color="#ff6b6b"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="10" dy="12" stdDeviation="0" flood-color="#000000"/>
+    </filter>
+    <filter id="softGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="0" stdDeviation="8" flood-color="#ffd166" flood-opacity="0.55"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="360" rx="34" fill="url(#bg)"/>
+  <rect x="24" y="24" width="1152" height="312" rx="28" fill="none" stroke="#ffffff" stroke-width="4" opacity="0.9"/>
+
+  <g opacity="0.14">
+    <circle cx="170" cy="85" r="55" fill="#ffffff">
+      <animate attributeName="r" values="45;62;45" dur="4s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="1030" cy="92" r="42" fill="#ffffff">
+      <animate attributeName="r" values="36;48;36" dur="3.2s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="980" cy="270" r="68" fill="#ffffff">
+      <animate attributeName="r" values="58;74;58" dur="5s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+
+  <g transform="translate(92 84)" filter="url(#shadow)">
+    <text x="0" y="0" fill="#ffffff" font-size="54" font-family="Verdana, Arial, sans-serif" font-weight="800" letter-spacing="2">
+      CAR RENTAL
+    </text>
+    <text x="0" y="56" fill="#ffd166" font-size="34" font-family="Verdana, Arial, sans-serif" font-weight="700" letter-spacing="1.5">
+      SERVER SIDE
+    </text>
+    <rect x="0" y="78" width="268" height="10" rx="5" fill="url(#accent)">
+      <animate attributeName="width" values="180;300;180" dur="3.4s" repeatCount="indefinite"/>
+    </rect>
+    <text x="0" y="128" fill="#d7d7df" font-size="18" font-family="Verdana, Arial, sans-serif">
+      Express • MongoDB • JWT • CORS • dotenv • Node.js
+    </text>
+  </g>
+
+  <g transform="translate(760 88)">
+    <circle cx="150" cy="86" r="74" fill="none" stroke="#ffd166" stroke-width="4" stroke-dasharray="12 14" opacity="0.7">
+      <animateTransform attributeName="transform" type="rotate" from="0 150 86" to="360 150 86" dur="12s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="150" cy="86" r="34" fill="#111317" stroke="#ffffff" stroke-width="4" filter="url(#softGlow)">
+      <animate attributeName="r" values="30;38;30" dur="2.6s" repeatCount="indefinite"/>
+    </circle>
+
+    <g transform="translate(55 150)">
+      <path d="M0 56 C44 18, 112 14, 196 32 C234 40, 270 54, 300 52" fill="none" stroke="#ffffff" stroke-width="6" stroke-linecap="round" opacity="0.65"/>
+      <path d="M12 54 C54 20, 116 18, 198 34 C234 40, 272 50, 298 48" fill="none" stroke="#ffd166" stroke-width="4" stroke-linecap="round" opacity="0.9"/>
+    </g>
+
+    <g transform="translate(50 185)">
+      <g>
+        <animateTransform attributeName="transform" type="translate" values="0 0; 280 0; 0 0" dur="4.8s" repeatCount="indefinite"/>
+        <path d="M24 58h174c16 0 30-12 34-28l8-28c2-10-6-18-16-18h-38l-26-28H96c-12 0-23 6-29 16L49 34H26c-11 0-20 9-20 20v4c0 11 9 20 20 20z" fill="#ff6b6b" stroke="#ffffff" stroke-width="4" stroke-linejoin="round"/>
+        <path d="M88 18h48l18 18H76z" fill="#ffd166" stroke="#ffffff" stroke-width="4" stroke-linejoin="round"/>
+        <rect x="22" y="20" width="50" height="26" rx="8" fill="#111317" stroke="#ffffff" stroke-width="4"/>
+        <circle cx="66" cy="74" r="22" fill="#111317" stroke="#ffffff" stroke-width="4"/>
+        <circle cx="66" cy="74" r="8" fill="#ffffff"/>
+        <circle cx="180" cy="74" r="22" fill="#111317" stroke="#ffffff" stroke-width="4"/>
+        <circle cx="180" cy="74" r="8" fill="#ffffff"/>
+        <circle cx="66" cy="74" r="36" fill="none" stroke="#ffd166" stroke-width="2" opacity="0.35">
+          <animate attributeName="r" values="30;39;30" dur="1.8s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="180" cy="74" r="36" fill="none" stroke="#ffd166" stroke-width="2" opacity="0.35">
+          <animate attributeName="r" values="30;39;30" dur="1.8s" repeatCount="indefinite"/>
+        </circle>
+      </g>
+    </g>
+  </g>
+
+  <g opacity="0.2" stroke="#ffffff" stroke-width="2">
+    <path d="M72 308h180"/>
+    <path d="M324 308h108"/>
+    <path d="M530 308h144"/>
+    <path d="M918 308h210"/>
+  </g>
+</svg>
