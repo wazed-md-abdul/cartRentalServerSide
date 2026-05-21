@@ -45,68 +45,66 @@ const verifyToken = async (req,res,next) => {
 async function run() {
   try {
 
-
-
-
-
-
-
     const db = client.db("DriveLoop");
     const carsCollection = db.collection("cars");
     const bookingCollection = db.collection("booking");
 
 
 
-    app.post('/booking', async (req, res) => {
+    app.post('/booking', verifyToken, async (req, res) => {
       const car = req.body;
       const result = await bookingCollection.insertOne(car);
       res.send(result);
     })
+    // 
     app.get('/booking/:id', verifyToken, async (req, res) => {
-      
-      
       const userId = req.params.id;
       const query = { userId: userId };
       const result = await bookingCollection.find(query).toArray();
       res.send(result);
     })
-    app.get('/cars/:id', async (req, res) => {
+    // 
+    app.get('/cars/:id', verifyToken, async (req, res) => {
       const id = req.params.id;
       const query = { _id: new ObjectId(id) };
       const result = await carsCollection.findOne(query);
       res.send(result);
     })
-    app.post('/cars', async (req, res) => {
+    // 
+    app.post('/cars', verifyToken, async (req, res) => {
       const car = req.body;
       const result = await carsCollection.insertOne(car);
       res.send(result);
     })
-
-    app.get('/added-cars/:id', async (req, res) => {
+    // 
+    app.get('/added-cars/:id', verifyToken, async (req, res) => {
       const id = req.params.id;
       const query = {userId: id};
       const result = await carsCollection.find(query).toArray();
       res.send(result);
     })
-    app.delete('/added-cars/:id', async (req, res) => {
+    // 
+    app.delete('/added-cars/:id', verifyToken, async (req, res) => {
       const id = req.params.id;
       const query = { _id: new ObjectId(id) };
       const result = await carsCollection.deleteOne(query);
       res.send(result);
     })
-    app.get('/featured-cars', async (req, res) => {
+    // 
+    app.get('/featured-cars',  async (req, res) => {
       const result = await carsCollection.find().limit(3).toArray();
       res.send(result); 
     })
-    app.patch('/cars/:id', async (req, res) => {
-      const id = req.params.id;
-      const result = await carsCollection.updateOne(
-          { _id: new ObjectId(id) },
-          { $inc: { bookedUserCount: 1 } }
-      );
-      res.send(result);
-    })
-    app.patch('/update/:id', async (req, res) => {
+    // app.patch('/cars/:id', verifyToken, async (req, res) => {
+    //   const id = req.params.id;
+    //   const result = await carsCollection.updateOne(
+    //       { _id: new ObjectId(id) },
+    //       { $inc: { bookedUserCount: 1 } }
+    //   );
+    //   res.send(result);
+    // })
+    
+    app.patch('/update/:id', verifyToken, async (req, res) => {
       const id = req.params.id;
       const body = req.body;
       
@@ -116,6 +114,7 @@ async function run() {
       );
       res.send(result);
     })
+    // 
     app.get('/cars', async (req, res) => {
       const { search } = req.query;
      
