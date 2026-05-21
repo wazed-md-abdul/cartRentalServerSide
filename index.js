@@ -25,6 +25,10 @@ const verifyToken = async (req,res,next) => {
   }
   console.log(authHeader);
   const token = authHeader?.split(' ')[1];
+  console.log(token);
+  console.log(typeof token);
+  
+  
   if(!token){
     return res.status(401).send({message: 'unauthorized access'});
   }
@@ -63,6 +67,8 @@ async function run() {
       res.send(result);
     })
     app.get('/booking/:id', verifyToken, async (req, res) => {
+      
+      
       const userId = req.params.id;
       const query = { userId: userId };
       const result = await bookingCollection.find(query).toArray();
@@ -116,7 +122,7 @@ async function run() {
     })
     app.get('/cars', async (req, res) => {
       const { search } = req.query;
-      console.log(search);
+     
       let cursor;
       if (search) {
         if (search === 'All') {
